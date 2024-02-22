@@ -14,7 +14,7 @@ CURRENT STATE:
 ];
 
 INPUT DETAILS: 
-Param 1: Alice
+Param 1: Alice/ Мисля че тук трябва да е "Ivan"
 Param 2: 26
 Param 3: painting
 
@@ -25,43 +25,21 @@ EXPECTED RESULT:
   { name: "Maria", age: 35, hobbies: ["swimming", "coding"] }
 ];
 */
-(function () {
+function solve(name, age, newHobby) {
 	let startState = [
-		{ orderId: 1, customerName: "Ivan", status: "shipped" },
-		{ orderId: 2, customerName: "Petar", status: "processing" },
-		{ orderId: 3, customerName: "Maria", status: "delivered" },
+		{ name: "Ivan", age: 25, hobbies: ["reading", "hiking"] },
+		{ name: "Petar", age: 30, hobbies: ["cycling", "gaming"] },
+		{ name: "Maria", age: 35, hobbies: ["swimming", "coding"] },
 	];
+	//   You will implement a function to add a new hobby to a user's profile
+	// and another function to update the user's age.??????
+	startState.forEach((el) => {
+		if (el.name == name) {
+			el.age = age;
+            el.hobbies.splice(0,0,newHobby)
+		}
+	});
+    return startState;
+}
+console.log(solve("Ivan", 26, "painting"));
 
-	function addOrder(name, status) {
-		startState.push({
-			orderId: startState.length + 1,
-			customerName: name,
-			status: status,
-		});
-		// console.log(startState);
-	}
-
-	function getOrdersByCustomer(name) {
-		startState.forEach((order) => {
-			if (order.customerName == name) {
-				console.log("getOrdersByCustomer: ");
-				console.log(order);
-				console.log("---------------");
-				return order;
-			}
-		});
-	}
-
-	function updateOrderStatus(orderId, newStatus) {
-		startState.forEach((order) => {
-			if (order.orderId == orderId) {
-				order.status = newStatus;
-				return;
-			}
-		});
-	}
-	addOrder("Ana", "received");
-	getOrdersByCustomer("Ana");
-	updateOrderStatus(4, "processing");
-	getOrdersByCustomer("Ana");
-})();
