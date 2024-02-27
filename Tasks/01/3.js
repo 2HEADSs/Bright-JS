@@ -11,7 +11,7 @@ Result: 5 15
 */
 
 function solve(input) {
-	input.sort();
-	console.log(`${input[0]} ${input[1]}`);
+	let arr = input.sort((a, b) => a - b);
+	console.log(`${arr[0]} ${arr[1]}`);
 }
 solve([30, 15, 50, 5]);
